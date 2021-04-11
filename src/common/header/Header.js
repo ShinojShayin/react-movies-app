@@ -47,7 +47,12 @@ class Header extends Component {
   }
 
   openModalHandler = () => {
-    this.setState({ modelIsOpen: true });
+    this.setState({
+      modelIsOpen: true,
+      usernameRequired: "dispNone",
+      username: "",
+      value: 0,
+    });
   };
 
   closeModalHandler = () => {
