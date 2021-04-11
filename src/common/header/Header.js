@@ -42,7 +42,9 @@ class Header extends Component {
       modalIsOpen: false,
       value: 0,
       usernameRequired: "dispNone",
+      passwordRequired: "dispNone",
       username: "",
+      password: "",
     };
   }
 
@@ -50,8 +52,10 @@ class Header extends Component {
     this.setState({
       modelIsOpen: true,
       usernameRequired: "dispNone",
+      passwordRequired: "dispNone",
       username: "",
       value: 0,
+      password: "",
     });
   };
 
@@ -67,10 +71,18 @@ class Header extends Component {
     this.state.username === ""
       ? this.setState({ usernameRequired: "dispBlock" })
       : this.setState({ usernameRequired: "dispNone" });
+
+    this.state.password === ""
+      ? this.setState({ passwordRequired: "dispBlock" })
+      : this.setState({ passwordRequired: "dispNone" });
   };
 
   inputUsernameChangeHandler = (e) => {
     this.setState({ username: e.target.value });
+  };
+
+  inputPasswordChangeHandler = (e) => {
+    this.setState({ password: e.target.value });
   };
 
   render() {
@@ -123,8 +135,11 @@ class Header extends Component {
                 <Input
                   id="password"
                   type="text"
-                  username={this.state.username}
+                  onChange={this.inputPasswordChangeHandler}
                 />
+                <FormHelperText className={this.state.passwordRequired}>
+                  <span className="red">required</span>
+                </FormHelperText>
               </FormControl>
               <br />
               <br />
