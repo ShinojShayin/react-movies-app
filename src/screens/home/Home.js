@@ -37,7 +37,11 @@ class Home extends Component {
         <GridList col={5}>
           {moviesData.map((movie) => (
             <GridListTile key={movie.id}>
-              <img src={movie.poster_url} alt={movie.title} />
+              <img
+                src={movie.poster_url}
+                className="movie-poster"
+                alt={movie.title}
+              />
               <GridListTileBar title={movie.title} />
             </GridListTile>
           ))}
