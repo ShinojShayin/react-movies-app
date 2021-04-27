@@ -1,13 +1,15 @@
 import React, { Component } from "react";
+import ReactDOM from "react-dom";
 import "./Home.css";
+import Details from "../details/Details";
 import Header from "../../common/header/Header";
 import { withStyles } from "@material-ui/core/styles";
-import moviesData from "../../common/movieData";
+import moviesData from "../../assets/movieData";
 import GridList from "@material-ui/core/GridList";
 import GridListTile from "@material-ui/core/GridListTile";
 import GridListTileBar from "@material-ui/core/GridListTileBar";
-import genres from "../../common/genres";
-import artists from "../../common/artists";
+import genres from "../../assets/genres";
+import artists from "../../assets/artists";
 import Card from "@material-ui/core/Card";
 import CardContent from "@material-ui/core/CardContent";
 import FormControl from "@material-ui/core/FormControl";
@@ -73,6 +75,13 @@ class Home extends Component {
     this.setState({ artists: event.target.value });
   };
 
+  movieClickHandler = (movieId) => {
+    ReactDOM.render(
+      <Details movieId={movieId} />,
+      document.getElementById("root")
+    );
+  };
+
   render() {
     const { classes } = this.props;
     return (
@@ -83,7 +92,11 @@ class Home extends Component {
         </div>
         <GridList cols={5} className={classes.gridListUpcomingMovies}>
           {moviesData.map((movie) => (
-            <GridListTile key={movie.id}>
+            <GridListTile
+              onClick={() => this.movieClickHandler(movie.id)}
+              className="released-movie-grid-item"
+              key={"grid" + movie.id}
+            >
               <img
                 src={movie.poster_url}
                 alt={movie.title}
