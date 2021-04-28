@@ -1,7 +1,8 @@
 import React from "react";
 import ReactDOM from "react-dom";
 import "./index.css";
-import Home from "./screens/home/Home";
+import "./common/common.css";
 import "typeface-roboto";
+import Controller from "./screens/Controller";
 
-ReactDOM.render(<Home />, document.getElementById("root"));
+ReactDOM.render(<Controller />, document.getElementById("root"));
